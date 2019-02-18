@@ -58,7 +58,7 @@ export class HomeComponent implements OnInit, AfterContentInit, OnDestroy {
 
 
   constructor(private route: ActivatedRoute, private router: Router) {
-    this.socket = io.connect('http://localhost:3000');
+    this.socket = io.connect(this.router.url);
     if (this.route.snapshot.params.id) {
       this.room = this.route.snapshot.params.id;
     }
@@ -239,7 +239,7 @@ export class HomeComponent implements OnInit, AfterContentInit, OnDestroy {
 
     console.log('Getting user media with constraints', constraints);
 
-    if (location.hostname !== 'localhost') {
+    if (location.hostname !== 'obscure-scrubland-24735.herokuapp.com') {
       requestTurn(
         'https://computeengineondemand.appspot.com/turn?username=41784574&key=4080218913'
       );
