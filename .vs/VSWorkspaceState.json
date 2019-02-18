@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\.firebase",
+    "\\server",
+    "\\src",
+    "\\src\\app",
+    "\\src\\app\\home"
+  ],
+  "SelectedNode": "\\src\\app\\home\\home.component.css",
+  "PreviewInSolutionExplorer": false
+}

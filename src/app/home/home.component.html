@@ -1,0 +1,69 @@
+<header class="d-flex flex-row px-md-5 align-items-center">
+  <div class="color-1 logo">peervacy<i class="material-icons logoIcon color-1">lock</i></div>
+  <div class="pl-3 text-white font-1 pt-2">Room: {{this.room}}</div>
+</header>
+<section>
+    <div id="vid1Holder" class="embed-responsive embed-responsive-16by9">
+      <img #media class="d-none mw-100 embed-responsive-item" />
+      <video autoplay #vid1 class="bg-faded embed-responsive-item" id="vid1"></video>
+    </div>
+          <div id="vid2Holder" class="embed-responsive embed-responsive-16by9">
+            <video autoplay #vid2 class="bg-faded embed-responsive-item" id="vid2"></video>
+            <div id="camControls" class="d-flex flex-row w-100 justify-content-around mt-2">
+              <a class="py-2"><i class="material-icons icons color-1" #snap>camera</i></a>
+              <a class="py-2"><i class="material-icons icons color-1" #send>send</i></a>
+                </div>
+          </div>
+        <div class="embed-responsive embed-responsive-4by3 my-2 col-md-8 px-0 offset-md-2 d-none">
+          <canvas #preview width="250" height="250" class="preview embed-responsive-item" id="preview"></canvas>
+        </div>
+</section>
+<div id="messages" class="row mx-0">
+  <div id="msgCol" class="col-md-6 offset-md-3">
+    <ng-container *ngIf="messages">
+      <div *ngFor="let IM of messages" [style.text-align]="IM.host ? 'left' : 'right'">
+        <div class="font-2 text-white IM">{{IM.msg}}</div>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="!messages" class="text-center">
+      <div class="font-2 text-white mx-auto my-0 text-center">No messages received yet.</div>
+    </ng-container>
+  </div>
+</div>
+<footer>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-3"></div>
+        <div class="col-md-6 px-3 d-flex" id="messageDiv">
+          <div id="chatDiv" class="my-auto w-100">
+
+            <input [(ngModel)]="message" id="messageInput" />
+            <a id="sendButton" (click)="sendChatMessage()"><div id="sendIcon" class="material-icons icons color-1">message</div></a>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="d-flex main-pages align-items-center justify-content-center">
+            <a #goToRoom><div class="px-3 text-white font-1">goToRoom()</div></a>
+            <a #shareURL (click)="close()"><div class="px-3 text-white font-1">shareURL()</div></a>
+            <!--<a #shareMedia (click)="close()"><div class="px-3 font-1 text-white">shareMedia()</div></a>
+
+            <label class="font-1 btn-file color-2 px-4 mb-0">
+              Share File : <span class="font-2">browseFiles()</span>;<input type="file" class="form-control-file" name="img" rows="2" (change)="onFileSelected($event)" />
+            </label>-->
+
+          </div>
+        </div>
+      </div>
+  </div>
+</footer>
+<ng-container>
+  <div id="viewer">
+      <div id="IMGHolder" class="bg-faded media-received-holder align-self-center px-md-5 py-md-4">
+        <div id="trail" class="media-received embed-responsive embed-responsive-16by9 h-100"></div>
+      </div>
+      <div id="viewerBottomOptions" class="d-flex flex-row justify-content-around">
+       <a><i class="material-icons icons color-1">save</i></a>;
+       <a (click)="closeMedia()"><i class="material-icons icons color-1">close</i></a>;
+      </div>
+  </div>
+</ng-container>

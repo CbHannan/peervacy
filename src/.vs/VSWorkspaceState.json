@@ -1,0 +1,11 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\app",
+    "\\app\\home",
+    "\\app\\menu",
+    "\\app\\messages"
+  ],
+  "SelectedNode": "\\app\\messages\\messages.component.html",
+  "PreviewInSolutionExplorer": false
+}
