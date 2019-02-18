@@ -1,6 +1,9 @@
 {
   "name": "erica",
   "version": "0.0.0",
+  "engines": {
+    "node": "11.2.0"
+  },
   "scripts": {
     "ng": "ng",
     "start": " && node ./server/index",
