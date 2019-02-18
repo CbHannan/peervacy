@@ -7,8 +7,8 @@
     "postinstall": "ng build --aot -prod",
     "build": "ng build",
     "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
+    "pree2e": "webdriver-manager update --standalone false --gecko false",
+    "e2e": "protractor"
   },
   "private": true,
   "dependencies": {
