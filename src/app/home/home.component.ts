@@ -53,9 +53,10 @@ export class HomeComponent implements OnInit, AfterContentInit, OnDestroy {
   goToRoom: ElementRef;
   @ViewChild('shareURL')
   shareURL: ElementRef;
-  //@ViewChild('shareMedia')
-  //shareMedia: ElementRef;
-
+  @ViewChild('preloader1')
+  preloader1: ElementRef;
+  @ViewChild('preloader2')
+  preloader2: ElementRef;
 
   constructor(private route: ActivatedRoute, private router: Router) {
     this.socket = io.connect(this.router.url);
@@ -205,6 +206,8 @@ export class HomeComponent implements OnInit, AfterContentInit, OnDestroy {
 
     var localVideo = this.vid2.nativeElement;
     var remoteVideo = this.vid1.nativeElement;
+    var remoteLoader = this.preloader1.nativeElement;
+    var localLoader = this.preloader2.nativeElement;
 
     navigator.mediaDevices.getUserMedia({
       audio: false,
@@ -222,9 +225,12 @@ export class HomeComponent implements OnInit, AfterContentInit, OnDestroy {
       localVideo.onloadedmetadata = function () {
         preview.width = photoContextW = localVideo.videoWidth ;
         preview.height = photoContextH = localVideo.videoHeight;
-        localVideo.classList.remove('bg-dark');
         console.log('gotStream with width and height:', photoContextW, photoContextH);
       };
+      localVideo.oncanplay = function () {
+        localLoader.classList.add('fade-out');
+        localVideo.classList.remove('bg-dark');
+      }
       sendMessage('got user media');
       if (isInitiator) {
         maybeStart();
@@ -363,9 +369,12 @@ export class HomeComponent implements OnInit, AfterContentInit, OnDestroy {
 
     function handleRemoteStreamAdded(event) {
       console.log('Remote stream added.');
-      remoteVideo.classList.remove('bg-dark');
       remoteStream = event.stream;
       remoteVideo.srcObject = remoteStream;
+      remoteVideo.oncanplay = function () {
+        remoteLoader.classList.add('fade-out');
+        remoteVideo.classList.remove('bg-dark');
+      }
     }
 
     function handleRemoteStreamRemoved(event) {
