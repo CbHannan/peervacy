@@ -220,6 +220,7 @@ export class HomeComponent implements OnInit, AfterContentInit, OnDestroy {
 
     function gotStream(stream) {
       console.log('Adding local stream.');
+      localLoader.classList.remove('d-none');
       localStream = stream;
       localVideo.srcObject = stream;
       localVideo.onloadedmetadata = function () {
@@ -369,6 +370,7 @@ export class HomeComponent implements OnInit, AfterContentInit, OnDestroy {
 
     function handleRemoteStreamAdded(event) {
       console.log('Remote stream added.');
+      remoteLoader.classList.remove('d-none');
       remoteStream = event.stream;
       remoteVideo.srcObject = remoteStream;
       remoteVideo.oncanplay = function () {
