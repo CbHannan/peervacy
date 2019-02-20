@@ -16,9 +16,8 @@ body,html{
 
 .font-1 {
   font-family: 'Raleway', sans-serif;
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-weight: 200;
-  text-transform:capitalize;
   letter-spacing:2px;
 }
 .font-2 {
