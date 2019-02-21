@@ -49,10 +49,7 @@ export class HomeComponent implements OnInit, AfterContentInit, OnDestroy {
   @ViewChild('hangupButton')
   hangupButton: ElementRef;
 
-  @ViewChild('goToRoom')
-  goToRoom: ElementRef;
-  @ViewChild('shareURL')
-  shareURL: ElementRef;
+
   @ViewChild('preloader1')
   preloader1: ElementRef;
   @ViewChild('preloader2')
@@ -122,20 +119,22 @@ export class HomeComponent implements OnInit, AfterContentInit, OnDestroy {
     };
 
     /////////////////////////////////////////////
-    if (this.room) {
-       room = this.room;
-    } else {
-      room = prompt('Enter room name:');
-      this.room = room;
-    }
+   
+    
     // Could prompt for room name:
     // room = prompt('Enter room name:');
 
     var socket = io.connect();
 
-    if (room !== '') {
+    if (this.room) {
+      room = this.room;
       socket.emit('create or join', room);
       console.log('Attempted to create or  join room', room);
+    } else if (this.room == '') {
+        this.room = String(Math.floor(Math.random() * 90000) + 10000);
+        room = this.room;
+        socket.emit('create or join', room);
+        console.log('Attempted to create or  join room', room);
     }
 
     socket.on('created', ((room) => {
@@ -630,8 +629,20 @@ export class HomeComponent implements OnInit, AfterContentInit, OnDestroy {
   }
    toRoom() {
   this.router.navigate([prompt('Enter room name:')]);
-}
-
+  }
+   shareURL() {
+     let selBox = document.createElement('textarea');
+     selBox.style.position = 'fixed';
+     selBox.style.left = '0';
+     selBox.style.top = '0';
+     selBox.style.opacity = '0';
+     selBox.value = this.room;
+     document.body.appendChild(selBox);
+     selBox.focus();
+     selBox.select();
+     document.execCommand('copy');
+     document.body.removeChild(selBox);
+   }
   //public downloadZip() {
   //  var trail = document.getElementById("trail");
   //  var context = trail.firstChild;

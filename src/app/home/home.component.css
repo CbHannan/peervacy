@@ -20,7 +20,7 @@ height:100%;
 }
 #vid2Holder{
   position:absolute;
-  top:3rem;
+  bottom:1.5rem;
   right:3rem;
   width:20%;
 
@@ -95,7 +95,7 @@ header {
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 100;
+  z-index: 1000;
 }
 
 
@@ -117,7 +117,6 @@ footer {
   position: absolute;
   bottom: 0;
   left: 0;
-  padding:0 1.5rem;
   z-index: 100;
 }
 
@@ -125,7 +124,7 @@ footer {
   font-size: 1.5rem;
   font-weight: 500;
 }
-.logo, .main-pages, header {
+.logo, .main-pages, header, .font-1 {
   transition: all 1s ease;
 }
 
@@ -190,11 +189,17 @@ padding-left:2rem;
   padding: 10px;
 }
 .preloader {
-  width: 20vw;
-  height: 20vw;
   opacity:1;
 }
 
+.pre1{
+  height:200px;
+  width:200px;
+}
+.pre2{
+  height:75px;
+  width:75px;
+}
   .preloader,
   .preloader hr {
     position: absolute;
@@ -282,4 +287,14 @@ padding-left:2rem;
   -webkit-animation-duration: .5s;
   -webkit-animation-timing-function: linear;
   -webkit-animation-iteration-count: initial;
+}
+.full-menu{
+  height:100%;
+  background-color:black;
+}
+.big-logo{
+  font-size:3.5rem !important;
+}
+.big-text{
+  font-size:1.5rem !important;
 }
