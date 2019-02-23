@@ -298,3 +298,15 @@ padding-left:2rem;
 .big-text{
   font-size:1.5rem !important;
 }
+@media(max-width:991px) {
+  header a {
+    display: none !important;
+  }
+  .big-logo {
+    font-size: 2rem !important;
+  }
+
+  .big-text {
+    font-size: 1rem !important;
+  }
+}

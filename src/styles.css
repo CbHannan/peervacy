@@ -103,3 +103,18 @@ height:100vh;}
 .objCon {
   object-fit: contain !important;
 }
+@media(max-width:991px) {
+  .font-1, .font-2 {
+    font-size: .75rem;
+  }
+
+
+  .logo {
+    font-size: 1.5rem;
+  }
+
+  .header-1 {
+    font-size: 1rem;
+  }
+
+}
