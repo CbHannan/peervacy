@@ -373,7 +373,7 @@ export class HomeComponent implements OnInit, AfterContentInit, OnDestroy {
       remoteStream = event.stream;
       remoteVideo.srcObject = remoteStream;
       remoteVideo.oncanplay = function () {
-        remoteLoader.classList.add('fade-out');
+        remoteLoader.classList.add('d-none');
         remoteVideo.classList.remove('bg-dark');
       }
     }
